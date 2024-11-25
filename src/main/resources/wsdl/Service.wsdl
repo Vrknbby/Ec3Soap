@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions
+        name="Service"
+        targetNamespace="http://idat.pe/Service/wsdl"
+        xmlns:tns="http://idat.pe/Service/wsdl"
+        xmlns:ns1="http://idat.pe/Service/schema"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://idat.pe/Service/wsdl" >
+            <xsd:import namespace="http://idat.pe/Service/schema" schemaLocation="Service.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="GetMovieRequest">
+        <wsdl:part element="ns1:GetMovieRequest" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="GetMovieResponse">
+        <wsdl:part element="ns1:GetMovieResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="AddMovieRequest">
+        <wsdl:part element="ns1:AddMovieRequest" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="AddMovieResponse">
+        <wsdl:part element="ns1:AddMovieResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateMovieRequest">
+        <wsdl:part element="ns1:UpdateMovieRequest" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateMovieResponse">
+        <wsdl:part element="ns1:UpdateMovieResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="DeleteMovieRequest">
+        <wsdl:part element="ns1:DeleteMovieRequest" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="DeleteMovieResponse">
+        <wsdl:part element="ns1:DeleteMovieResponse" name="parameters"/>
+    </wsdl:message>
+
+    <wsdl:portType name="SoapServicePort">
+        <wsdl:operation name="GetMovie">
+            <wsdl:input message="tns:GetMovieRequest"/>
+            <wsdl:output message="tns:GetMovieResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddMovie">
+            <wsdl:input message="tns:AddMovieRequest"/>
+            <wsdl:output message="tns:AddMovieResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateMovie">
+            <wsdl:input message="tns:UpdateMovieRequest"/>
+            <wsdl:output message="tns:UpdateMovieResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteMovie">
+            <wsdl:input message="tns:DeleteMovieRequest"/>
+            <wsdl:output message="tns:DeleteMovieResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="ServiceSOAPBinding" type="tns:SoapServicePort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetMovie">
+            <soap:operation soapAction="http://idat.pe/Service/GetMovie"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddMovie">
+            <soap:operation soapAction="http://idat.pe/Service/AddMovie"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateMovie">
+            <soap:operation soapAction="http://idat.pe/Service/UpdateMovie"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteMovie">
+            <soap:operation soapAction="http://idat.pe/Service/DeleteMovie"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="Service">
+        <wsdl:port binding="tns:ServiceSOAPBinding" name="ServiceSOAPBinding">
+            <soap:address location="http://localhost:8080/services/soap/Service"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
